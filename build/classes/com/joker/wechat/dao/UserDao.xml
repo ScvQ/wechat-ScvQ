@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eooof.wechat.dao.UserDao">
+	<resultMap type="com.eooof.wechat.model.entity.User" id="userMap">
+	   <id column="c_open_id" property="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+	   <result column="c_nickname" property="nickname" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	   <result column="c_sex" property="sex" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<insert id="addUser">
+		INSERT into t_user(c_openid,c_nickname,c_sex) VALUES(#{openid},#{nickname},#{sex})
+	</insert>
+	
+	<select id="checkUser" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM t_user WHERE c_openid = #{openid}
+	</select>
+		
+</mapper>
